@@ -10,9 +10,11 @@ class AimCallback(Callback):
         self,
         name: Optional[str] = "PyHopper",
         repo: Optional[str] = None,
+        run_name: Optional[str] = "",
     ):
         self.run: aim.Run = aim.Run(experiment=name, repo=repo)
         self._best_params = None
+        self.run.name = run_name + " " + self.run.hash
 
     def on_search_start(self, search):
         pass
